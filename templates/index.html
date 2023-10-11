@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logos/favicon.png') }}" type="image/x-icon" />
+    <title>Introducing Mood Master</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"> 
+</head>
+<body>
+
+    <div class = 'backgro'>
+        <div class = "backgroimg"></div>
+    </div>
+    <!-- Navbar -->
+    <div class = "navbar" id = "navbar">
+        <ul>
+            <li><a href="#"> <img src="{{ url_for('static', filename='logos/favicon.png') }}"></a></li>
+            <li><a href="#" style = "color: #E54C41"> Home </a> </li>
+            <li><a href="{{ url_for('app_page') }}" style = "color: #3FA95B;"> Try Mood Master </a> </li>
+            <li><a href = "{{ url_for('about') }}" style = "color: #4C88EF"> About </a></li>
+            <li><button onclick="loginClicked()" id = "login"><img src = "{{ url_for('static', filename='logos/login.png') }}"></button></li>
+        </ul>
+    </div>
+
+    <div class = "loginUI">
+        <input type = "checkbox" id = "chk" aria-hidden="true" onchange="hideText()">
+        <p class = "loginError"></p>
+        <div class = "signup">
+            <form class = "signupform" id = "signupform">
+                <label class = "inps" for="chk">Sign up</label>
+                <input class = "inps usersignname" type = "text" name = "name" placeholder="Full Name" required = "">
+                <input class = "inps usersignemail" type = "email" name = "email" placeholder="Email" required = "">
+                <input class = "inps usersignpassword" type = "password" name = "pswd" placeholder="Password" required = "">
+                <button class = "inps">Sign up</button>
+            </form>
+        </div>
+
+        <div class = "login">
+            <form class = "loginform" id = "loginform">
+                <label class = "inps" for="chk">Login</label>
+                <input class = "inps userlogemail" type = "email" name = "email" placeholder="Email" required = "">
+                <input class = "inps userlogpassword" type = "password" name = "pswd" placeholder="Password" required = "">
+                <button class = "inps">Login</button>
+            </form>
+        </div>
+        <div>
+            <div class = "welcome mmm"><h3>Welcome</h3></div>
+            <div class = "mmm name"><h4 class = "nametext">name</h4></div>
+            <div onclick = logout() class = "logout mmm">Logout</div>
+        </div>
+
+
+    </div>
+    
+    <h1 class = 'typewriter'> Introducing... </h1>
+
+    <img class = "logo" src = "{{ url_for('static', filename='logos/favicon.svg') }}">
+    <img class = "logo-text" id = "logo-text" src = "{{ url_for('static', filename='logos/text.png') }}">
+
+    <button class = "try" id = "try" onclick = "window.location.href='{{ url_for('app_page') }}'"> Try Mood Master <span class = "Arrow">↗</span> </button>
+
+
+
+    <div class="infobox">
+        <div class = "box">
+            <h2 class = "infograph scanim" id = 0>Discover the power of <span class = "point0 infograph">emotional intelligence</span></h2>
+
+            <!-- <h3>Benefits</h3> -->
+            <ul>
+                <li class = "infograph scanim" id = 1><span class = "point1">Gain personal</span> insights into your emotions</li>
+                <li class = "infograph scanim" id = 2><span class = "point2">Develop valuable skills</span> for emotional regulation</li>
+                <li class = "infograph scanim" id = 3><span class = "point3">Enhance your well-being</span> and resilience</li>
+                <li class = "infograph scanim" id = 4><span class = "point4">Cultivate self-awareness</span> and unlock your full potential</li>
+            </ul>
+            
+            <h2 class = "infograph scanim" id = 5>Over <span class = "point5">46,000,000</span> people suffer from bipolar disorder</h2>
+        </div>
+    </div>
+
+    <div class = "mission-align">
+        <div class = "mission">
+            <h2>Empowering individuals through AI-driven emotional intelligence to master their emotions and enhance mental well-being</h2>
+        </div>
+    </div>
+
+    <div class = moodmasterInfo id = "moodinfo">
+        <div class = "video scanim">
+            <video controls width="90%">
+                <source src="{{ url_for('static', filename='logos/webdemo.webm') }}" type="video/webm">
+        </div>
+
+        <div class = "moodcontainer scanim">
+            <h2 class = "MeetMood">Meet Mood Master, your new <span class = "point6">Intelligent Emotional Guide</span></h2>
+            <h3 class = "MeetMoodMini">Mood Master helps you learn about emotions at your own pace. Try it for free!</h3>
+
+            <button onclick="window.location.href='{{ url_for('app_page') }}'" class = "MeetMoodButton">Try Mood Master <span class = "Arrow">↗</span></button>
+        </div>
+
+
+        
+
+        <div class = "moodcontainer2 scanim">
+            <h2 class = "MeetMood">Elevate your potential with <span class = "point6">Mood Master app</span> </h2>
+            <h3 class = "MeetMoodMini">Mood Master app is currently under development.</h3>
+
+            <button onclick="window.location.href='{{ url_for('app_page') }}'" class = "MeetMoodButton">Try Mood Master <span class = "Arrow">↗</span></button>
+        </div>
+
+        <div class = "img scanim">
+            <img src="{{ url_for('static', filename='logos/iphone_14.png') }}">
+        </div>
+    </div>
+    <div class = "moodbot-info">
+        <div class="container scanim">
+            <p class = "new">New!</p>
+            <h1 class="section-title">MoodBot</h1>
+            <h3 class = "powered">Powered by GPT-4</h3>
+            <p class="section-description">The world's first AI assistant designed to help users master their emotions</p>
+            <p>24/7 assistance can be costly</p>
+            
+            <div class = "bot-benefits">
+                <p>All for free</p>
+            </div>
+            <button onclick=toggleChat() class="cta-button">Try MoodBot now <span class = "Arrow">↗</span></button>
+        </div>
+
+          
+    </div>
+
+
+    <div class = "chat active" onclick="toggleChat()" id = 'chat'></div>
+    <script src="{{ url_for('static', filename='scripts/chat.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/login.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
+</body>
+</html>

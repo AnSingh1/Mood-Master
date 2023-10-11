@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logos/favicon.png') }}" type="image/x-icon" />
+    <title>Mood Master</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"> 
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class = "navbar" id = "navbar">
+        <ul>
+            <li><a href="{{ url_for('index') }}"> <img src="{{ url_for('static', filename='logos/favicon.png') }}"></a></li>
+            <li><a href="{{ url_for('index') }}" style = "color: #E54C41"> Home </a> </li>
+            <li><a href="#" style = "color: #3FA95B;"> Try Mood Master </a> </li>
+            <li><a href = "{{ url_for('about') }}" style = "color: #4C88EF"> About </a></li>
+            <li><button onclick="loginClicked()" id = "login"><img id = "loginimg" src = "{{ url_for('static', filename='logos/login.png') }}"></button></li>
+        </ul>
+    </div>
+
+    <div class = "loginUI">
+        <input type = "checkbox" id = "chk" aria-hidden="true" onchange="hideText()">
+        <p class = "loginError"></p>
+        <div class = "signup">
+            <form class = "signupform" id = "signupform">
+                <label class = "inps" for="chk">Sign up</label>
+                <input class = "inps usersignname" type = "text" name = "name" placeholder="Full Name" required = "">
+                <input class = "inps usersignemail" type = "email" name = "email" placeholder="Email" required = "">
+                <input class = "inps usersignpassword" type = "password" name = "pswd" placeholder="Password" required = "">
+                <button class = "inps">Sign up</button>
+            </form>
+        </div>
+
+        <div class = "login">
+            <form class = "loginform" id = "loginform">
+                <label class = "inps" for="chk">Login</label>
+                <input class = "inps userlogemail" type = "email" name = "email" placeholder="Email" required = "">
+                <input class = "inps userlogpassword" type = "password" name = "pswd" placeholder="Password" required = "">
+                <button class = "inps">Login</button>
+            </form>
+        </div>
+        <div>
+            <div class = "welcome mmm"><h3>Welcome</h3></div>
+            <div class = "mmm name"><h4 class = "nametext">name</h4></div>
+            <div onclick = logout() class = "logout mmm">Logout</div>
+        </div>
+
+
+    </div>
+
+    <div class = "appintro scanim">
+        <img class = "phonemock scanim" src = "{{ url_for('static', filename='logos/iphone_14_allbg.png') }}">
+        <img class = "cartoon scanim" src = "{{ url_for('static', filename='logos/cartoonboy.png') }}">
+        <h1 style = "color: white; margin-top: 3%; font-size: 5em;">Welcome to<br><span style = "font-size: 1.3em; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Mood Master</span></h1>
+        <p style = "color: #fff; margin-top: 6%; font-size: 2em;">Learn emotions faster</p>
+        <div class = "directory">
+            <ul>
+                <li><button onclick = "MoodView()">Mood View</button></li>
+                <li><button onclick = "MoodText()">Mood Text</button></li>
+                <li><button onclick = "toggleChat()">MoodBot</button></li>
+                <li><button onclick="MoodJournal()">Mood Journal
+                
+                </button></li>
+            </ul>
+        </div>
+
+        <script>
+            function MoodView(){
+                const pos = document.querySelector('.moodview').getBoundingClientRect().top - 200;
+                window.scrollTo({
+                    top: pos,
+                    behavior: 'smooth',
+                })
+            }
+            function MoodText(){
+                const pos = document.querySelector('.moodtext').getBoundingClientRect().top - 200;
+                window.scrollTo({
+                    top: pos,
+                    behavior: 'smooth',
+                })
+            }
+            function MoodJournal(){
+                const pos = document.querySelector('.moodjournal').getBoundingClientRect().top - 200;
+                window.scrollTo({
+                    top: pos,
+                    behavior: 'smooth',
+                })
+            }
+        </script>
+    </div>
+
+    <div class = "moodview scanim"><h2>Mood View</h2>
+        <img src = "{{ url_for('static', filename='logos/cartoonfriends.png') }}" style = "left: 10%; height: 90%"> 
+        <img src = "{{ url_for('static', filename='logos/cartoonboy.png') }}" style = "left: 70%;">
+        <br>
+        <p>Detect your emotions in real time using the world's most sophisticated emotion detector</p>
+    </div>
+    
+
+    <div class = "selecttype scanim" id = "drop-area">
+
+        
+
+        <div id = "locked1" class = "locked"></div>
+
+        <div class = "outp" id = "output">
+            <div id="loading" style="display: none;"></div>
+            <img id = "live_video">
+            <video hidden id = "processed"></video>
+            <canvas id = "canvas"></canvas>
+
+        </div>
+        <div class = "Upload">
+            <h1>Run detection on a file</h1><br>
+            <p>Simpily click this box below or drag a file.<br><br>Supported file types include .jpeg .jpg .png .gif .mp4 .avi .webm .mov .bmp .tiff .tif .mkv .flv .mpeg .mpg .3gp .jp2 .pbm .pgm .ppm .pxm .pnm .pfm .sr .ras .exr .hdr .pic .wvm .webp .avif .dib </p>
+            
+            <!-- All of the files unordered, above ordered by popularity. .jpeg .jpg .jpe .bmp .dib .jp2 .png .webp .avif .pbm .pgm .ppm .pxm .pnm .pfm .sr .ras .tiff .tif .exr .hdr .pic .mp4 .avi .mkv .mov .wvm .flv .mpeg .mpg .3gp .webm -->
+            
+            <input class = "uploadinp" type="file" name="file">
+            <button class = "uploadbutton" id = "rarea"> Choose a file or drag it here. </button>
+            
+           
+            <div id = "file-info">
+                <div id = "loadbar"></div>
+            </div>
+        </div>
+
+        <div class = "Webcam"><h1>Live Webcam Detection</h1><br><p>Run realtime detection on your webcam.</p>
+            <div class = "videobutton" id = "videobutton">Click here to start live detection</div>
+        </div>
+    </div>
+
+    <div class = "moodtext scanim"><h2>Mood Text</h2>
+        <img src = "{{ url_for('static', filename='logos/bar.png') }}" style = "left: 10%; height: 90%"> 
+        <img src = "{{ url_for('static', filename='logos/cartoonboy.png') }}" style = "left: 70%;">
+        <br>
+        <p>Turn text into emotions through an advanced transformer model</p>
+    </div>
+
+    <div class = "text scanim">
+        <textarea class = "textinp" placeholder="Convert text to emotion..." name = "textinp"></textarea>
+        <button class = "textsubmit">
+            <svg id = "sendButtonSVG" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6b7280" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"></path></svg>
+        </button>
+        <h2 class = "results">Estimated Results by Emotion</h2>
+        <div class =  "chart"><canvas id="myChart"></canvas></div>
+    </div>
+
+    <div class = "moodjournal scanim"><h2>Mood Journal</h2>
+        <img src = "{{ url_for('static', filename='logos/cartoonfriends.png') }}" style = "left: 10%; height: 50%;"> 
+        <img src = "{{ url_for('static', filename='logos/cartoonboy.png') }}" style = "left: 70%;">
+        <br>
+        <p>The world's simplest Mood Tracker using Mood View</p>
+        <br>
+        <p>Mood Journal is currently in development. Come back soon!</p>
+    </div>
+
+    <div class = "space"></div>
+
+    
+
+    <div class = "chat active" onclick="toggleChat()" id = 'chat'></div>
+    <script src="{{ url_for('static', filename='scripts/chat.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/login.js') }}"></script>
+
+
+    <script src="{{ url_for('static', filename='scripts/moodmaster.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
+    
+</body>
+</html>

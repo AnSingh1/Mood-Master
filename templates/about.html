@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logos/favicon.png') }}" type="image/x-icon" />
+    <title>About Us</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <!-- Navbar -->
+    <div class = "navbar" id = "navbar">
+        <ul>
+            <li><a href="{{ url_for('index') }}"> <img src="{{ url_for('static', filename='logos/favicon.png') }}"></a></li>
+            <li><a href="{{ url_for('index') }}" style = "color: #E54C41"> Home </a> </li>
+            <li><a href="{{ url_for('app_page') }}" style = "color: #3FA95B;"> Try Mood Master </a> </li>
+            <li><a href = "{{ url_for('about') }}" style = "color: #4C88EF"> About </a></li>
+            <li><button onclick="loginClicked()" id = "login"><img src = "{{ url_for('static', filename='logos/login.png') }}"></button></li>
+        </ul>
+    </div>
+
+    <div class = "loginUI">
+        <input type = "checkbox" id = "chk" aria-hidden="true" onchange="hideText()">
+        <p class = "loginError"></p>
+        <div class = "signup">
+            <form class = "signupform" id = "signupform">
+                <label class = "inps" for="chk">Sign up</label>
+                <input class = "inps usersignname" type = "text" name = "name" placeholder="Full Name" required = "">
+                <input class = "inps usersignemail" type = "email" name = "email" placeholder="Email" required = "">
+                <input class = "inps usersignpassword" type = "password" name = "pswd" placeholder="Password" required = "">
+                <button class = "inps">Sign up</button>
+            </form>
+        </div>
+
+        <div class = "login">
+            <form class = "loginform" id = "loginform">
+                <label class = "inps" for="chk">Login</label>
+                <input class = "inps userlogemail" type = "email" name = "email" placeholder="Email" required = "">
+                <input class = "inps userlogpassword" type = "password" name = "pswd" placeholder="Password" required = "">
+                <button class = "inps">Login</button>
+            </form>
+        </div>
+        <div>
+            <div class = "welcome mmm"><h3>Welcome</h3></div>
+            <div class = "mmm name"><h4 class = "nametext">name</h4></div>
+            <div onclick = logout() class = "logout mmm">Logout</div>
+        </div>
+
+
+    </div>
+
+
+    <div class = "aboutintro scanim">
+        <img class = "phonemock scanim" src = "{{ url_for('static', filename='logos/bar.png') }}">
+        <img class = "cartoon2 scanim" src = "{{ url_for('static', filename='logos/cartoonfriends.png') }}">
+        <h1 style = "color: white; margin-top: 3%; font-size: 5em; line-height: 400%;">About Us<br></h1>     
+    </div>
+
+    <div class = "aboutpage">
+        <div class = "about scanim">
+            <h1>About Us</h1>
+            <p>Welcome to Mood Master, a platform dedicated to helping lonely individuals find connection, understanding, and emotional growth. Our mission is to provide a safe and supportive space where you can explore your emotions, enhance your emotional intelligence, and embark on a journey towards a happier and more connected life.</p>
+        </div>
+    
+        <div class = "story scanim">
+            <h1>Our Story</h1>
+            <p>The idea behind Mood Master was born out of a deep understanding of the challenges that loneliness can bring. We recognize that loneliness is a universal human experience that can affect anyone, regardless of age, background, or circumstances. It's a feeling that can be overwhelming and isolating, often making it difficult to express and navigate our emotions effectively.
+                <br><br>Our team of passionate individuals, including psychologists, technologists, and mental health advocates, came together with a shared vision: to use technology to bridge the gap between emotional understanding and personal connection. With this vision in mind, we embarked on a journey to create a platform that leverages advanced machine learning techniques to provide a helping hand to those who may be feeling lonely or emotionally disconnected.</p>
+        </div>
+
+        <div class = "offer scanim">
+            <h1>What We Offer</h1>
+            <p>At Mood Master, we offer a unique set of tools designed specifically for individuals seeking emotional connection and growth:
+                <ul>
+                    <br><li>MoodBot: Our advanced chatbot powered by state-of-the-art language models is here to listen, engage in meaningful conversations, and offer insights into your emotions. Whether you want to express yourself, seek advice, or simply share your thoughts, our chatbot is here to support you.</li>
+                    <br><li>Mood View: Our innovative webcam-based emotion detection feature allows you to explore your own emotions visually. By analyzing your facial expressions, we can help you gain a deeper understanding of how you're feeling and provide guidance on managing those emotions.</li>
+                    <br><li>Mood Text: Expressing your emotions through text can be a powerful way to connect. Our text-to-emotion algorithm can analyze your written words, helping you uncover the underlying emotions and enabling you to communicate more effectively with others.</li>
+                    <br><li>Mood Diary: Coming soon!</li>
+                </ul>            
+            </p>
+        </div>
+
+        <div class = "community scanim">
+            <h1>A supportive community</h1>
+            <p>At the heart of MoodMaster is a community that understands what it means to feel lonely. We believe that the path to healing and growth is often shared with others who have similar experiences. Our platform not only offers tools for self-discovery but also provides a space where you can connect with others who are on a similar journey.</p>
+        </div>
+
+    </div>
+    
+
+    <div class = "chat active" onclick="toggleChat()" id = 'chat'></div>
+    <script src="{{ url_for('static', filename='scripts/chat.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/login.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
+</body>
+</html>
