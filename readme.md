@@ -1,4 +1,5 @@
-# Mood Master ![favicon_small](https://github.com/AnSingh1/Mood-Master/assets/130875753/dc8ec40d-ba34-4684-bc59-6c1977c53945)
+# Mood Master ![favicon_small](https://github.com/AnSingh1/Mood-Master/assets/130875753/d8150d77-bfef-4034-ac51-25080b67c539)
+
 
 ## Description
 
@@ -42,40 +43,38 @@ FIREBASE_API_KEY: Enter your firebase api key, should be in a json format.
 
 - Mood View: Mood View is a feature that uses a video software to capture and analyze the facial expressions of the user in real time or with a video/image upload. It uses a facial detection algorithm to detect the user’s face and a facial expression classification algorithm to classify the user’s facial expression.
 
-<video src='https://github.com/AnSingh1/Mood-Master/assets/130875753/268decb7-e48e-4180-acf1-cd7fe570630d' width=180/></video>
-  
+<video src='https://github.com/AnSingh1/Mood-Master/assets/130875753/76bdeb38-8453-4a06-ba3e-66b66590000b' width=180/></video>
+
 Classified video through Mood View
 
 - MoodBot: MoodBot is an interactive chatbot that can provide personalized feedback and suggestions to the user. It uses the results from Mood View to help the user learn more about their actions and emotions. Powered by OpenAI.
   
-![MoodBot](https://github.com/AnSingh1/Mood-Master/assets/130875753/53daddb6-b3b0-47cb-8e83-a807cf41a854)
-
+![MoodBot](https://github.com/AnSingh1/Mood-Master/assets/130875753/080f7078-198a-4dc3-8380-f1927fb640f1)
 
 - Mood Text: Mood Text is a feature that uses a message analysis tool to detect the tone and sentiment of the user’s texts and offer guidance and support. Powered by OpenAI.
 
-![Mood Text](https://github.com/AnSingh1/Mood-Master/assets/130875753/c97083be-9573-496b-9654-731359ea54eb)
-
+![Mood Text](https://github.com/AnSingh1/Mood-Master/assets/130875753/b81e04e7-2b6c-4df1-9259-cde0ff950b59)
 
 - Login system: The login system allows the user to create an account and login to their account. It uses Fernet encryption and can withstand brute force attacks. Powered by Firebase.
-
-![Signup Page](https://github.com/AnSingh1/Mood-Master/assets/130875753/1b7e903b-8bae-4832-bc0d-201c4c8c8933)
-![Login Page](https://github.com/AnSingh1/Mood-Master/assets/130875753/b8031a14-5528-4208-beff-fa06356dd340)
+  
+![Signup Page](https://github.com/AnSingh1/Mood-Master/assets/130875753/d3fedf0a-94a7-4100-99fb-9c437264b860)
+![logIn](https://github.com/AnSingh1/Mood-Master/assets/130875753/228142b6-3f02-468a-823b-5ff1866fa2d2)
 
 ## Screenshots
 
-![mainPage](https://github.com/AnSingh1/Mood-Master/assets/130875753/fc77d601-c3d2-4d24-99a3-e7302957f0d9)
+!![Main Page](https://github.com/AnSingh1/Mood-Master/assets/130875753/17e869d9-2ff5-451a-8dbb-73165164ab62)
 Main Page
 
-![appPage](https://github.com/AnSingh1/Mood-Master/assets/130875753/aec3c17d-3378-46ad-ae98-e1aa89ad48a7)
+![App Page](https://github.com/AnSingh1/Mood-Master/assets/130875753/d1ec2076-408f-41f9-a53a-4d224b8c9772)
 App Page
 
-![MoodView](https://github.com/AnSingh1/Mood-Master/assets/130875753/4fbe9d96-314a-4cbf-be95-a49b39c972d9)
+![Mood View](https://github.com/AnSingh1/Mood-Master/assets/130875753/b52dd0f2-503f-4c82-a5c4-e0bf46bc78fc)
 Mood View Demo
 
-![MoodTextPage](https://github.com/AnSingh1/Mood-Master/assets/130875753/89de52de-c175-46bc-8827-b610825813cf)
+![Mood Text Page](https://github.com/AnSingh1/Mood-Master/assets/130875753/072c8c5d-02da-4fe9-bdb6-03a29e3a39c6)
 Mood Text
 
-![aboutPage](https://github.com/AnSingh1/Mood-Master/assets/130875753/ba1cfc5c-c228-4107-8401-4c28216332ae)
+![About Page](https://github.com/AnSingh1/Mood-Master/assets/130875753/ed5d9724-045b-4a97-a439-d3b7392b3cf0)
 About Page
 
 
