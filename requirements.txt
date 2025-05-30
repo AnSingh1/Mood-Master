@@ -9,4 +9,4 @@ keras==3.9.0
 numpy==1.23.5
 av==10.0.0
 matplotlib==3.6.2
-transformers==4.33.1
+transformers==4.50.0
